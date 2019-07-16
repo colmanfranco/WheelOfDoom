@@ -17,7 +17,8 @@ height: 100vh;
 
 /* PLAYERS CONTAINER */
 #wheel {
-height: 70%;
+height: 90%;
+width: 100%;
 display: flex;
 justify-content: center;
 }
@@ -59,3 +60,55 @@ background-color: green;
 }
   
   
+/* CIRCULO CSS */
+#wheel { 
+    height: 40em; 
+    width: 40em; 
+    border: 8px solid black;
+    background: rgba(0, 0, 0, 0.2); 
+    border-radius: 50%; 
+    position: relative; 
+    overflow: hidden; 
+    margin: auto;
+    margin-top: 30px;
+    background-color: ;
+} 
+
+
+.sect { 
+    height: 0; 
+    width: 0; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    border-right: 20em solid green; 
+    border-top: 20em solid transparent;
+    transform-origin: bottom left; 
+    /* transform: rotate(180deg);  */
+    border-right: 20em solid peru; 
+     
+} 
+
+.sect h3 {
+    position: relative;
+    top: -50px;
+    right: -180px;
+    color: white;
+    z-index: 100;
+}
+
+.inner-circ {
+    height: 20em; 
+    width: 20em; 
+    top: 50%;
+    left: 50%;
+    border: 8px solid black;
+    background-position: center;
+    border-radius: 50%; 
+    position: absolute; 
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: -10em 0em 0em -10em;
+}
