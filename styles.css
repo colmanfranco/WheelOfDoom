@@ -1,0 +1,61 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+text-decoration: none;
+color: black;
+}
+
+li {
+list-style: none;
+}
+
+main {
+width: 100%;
+height: 100vh;
+}
+
+/* PLAYERS CONTAINER */
+#wheel {
+height: 70%;
+display: flex;
+justify-content: center;
+}
+
+/* BUTTONS CONTAINER */
+#buttons {
+display: flex;
+justify-content: space-around;
+}
+
+/* GENERAL BUTTON STYLE */
+.button {
+    background-color: red;
+    padding: 1em;
+    display: block;
+}
+
+/* PLAYER STYLE */
+.player {
+
+    padding: 1em;
+    background-color: grey;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    display: flex;
+    
+}
+.alive {
+background-color: green;
+}
+
+.player-selected {
+    background-color: rgb(140, 0, 255);
+}
+
+.dead {
+    background-color: grey;
+}
+  
+  
