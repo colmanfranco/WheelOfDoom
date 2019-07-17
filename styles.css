@@ -13,13 +13,21 @@ list-style: none;
 main {
 width: 100%;
 height: 100vh;
+background-image: url('img/payaso_asesino.jpg');
+background-position: center;
+background-repeat: no-repeat;
+background-color: black;
 }
 
 /* PLAYERS CONTAINER */
 #wheel {
 height: 70%;
-display: flex;
+width: 100%;
+display: grid;
 justify-content: center;
+align-items: center;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+
 }
 
 /* BUTTONS CONTAINER */
@@ -38,10 +46,10 @@ justify-content: space-around;
 /* PLAYER STYLE */
 .player {
 
-    padding: 10%;
+    
     background-color: grey;
-    width: 200px;
-    height: 200px;
+    width: 5em;
+    height: 5em;
     border-radius: 100%;
     display: flex;
     align-items: center;

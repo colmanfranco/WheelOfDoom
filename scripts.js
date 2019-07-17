@@ -1,35 +1,131 @@
+//ARRAY PLAYER OBJECTS
 const players = [
     {
-      id: 1,
-      name: "name1",
-      dead: true,
-      img: ""
-    },
-    {
-      id: 2,
-  
-      name: "name2",
-      dead: false,
-      img: ""
-    },
-    { id: 3, name: "name3", dead: false, img: "" },
-    {
-      id: 4,
-      name: "name4",
-      dead: false,
-      img: ""
-    },
-    {
-      id: 5,
-      name: "name5",
-      dead: false,
-      img: ""
-    }
-  ];
+         id: 1,
+         name:"Alexandro",
+         dead: false
+     },
+     {
+         id: 2,
+         name:"Amau",
+         dead: false
+     },
+     {
+         id: 3,
+         name:"Camilo",
+         dead: false
+     },
+     {
+         id: 4,
+         name:"Carlos",
+         dead: false
+     },
+     {
+         id: 5,
+         name:"Delfina",
+         dead: false
+     },
+     {
+         id: 6,
+         name:"Enric",
+         dead: false
+     },
+     {
+         id: 7,
+         name:"Erik",
+         dead: false
+     },
+     {
+         id: 8,
+         name:"Ferran",
+         dead: false
+     },
+     {
+         id: 9,
+         name:"Franco",
+         dead: false
+     },
+     {
+         id: 10,
+         name:"Janina",
+         dead: false
+     },
+     {
+         id: 11,
+         name:"Jason",
+         dead: false
+     },
+     {
+         id: 12,
+         name:"Kavan",
+         dead: false
+     },
+     {
+         id: 13,
+         name:"Manuela",
+         dead: false
+     },
+     {
+         id: 14,
+         name:"Nathalia",
+         dead: false
+     },
+     {
+         id: 15,
+         name:"Nellay",
+         dead: false
+     },
+     {
+         id: 16,
+         name:"Noelia",
+         dead: false
+     },
+     {
+         id: 17,
+         name:"Nuria",
+         dead: false
+     },
+     {
+         id: 18,
+         name:"Raul",
+         dead: false
+     },
+     {
+         id: 19,
+         name:"Sergi",
+         dead: false
+     },
+     {
+         id: 20,
+         name:"Shuangjie",
+         dead: false
+     },
+     {
+         id: 21,
+         name:"Solomon",
+         dead: false
+     },
+     {
+         id: 22,
+         name:"Unai",
+         dead: false
+     },
+     {
+         id: 23,
+         name:"Andres",
+         dead: false
+     },
+     {
+         id: 24,
+         name:"Thierry",
+         dead: false
+     }
+ ];
   
 //State aplication
 const state = {
-    number: "",
+    randomNumber: "",
+    randomPlayerId: "player"+randomNumber+1,
     run: false
 };
 
@@ -41,47 +137,53 @@ function codersImport() {}
 
 //Print the wheel in DOM
 function printWheel() {
-let wheel = document.getElementById("wheel");
 
-let html = ``;
+    let wheel = document.getElementById("wheel");
 
-for (let i = 0; i < players.length; i++) {
-    if (players[i].dead === false) {
-    html += `<div class="player alive" id='player${players[i].id}'>${
-        players[i].name
-    }</div>`;
-    // html +=`<div class="circ">
-    // <div class="sect">
-    //   <h3>Sergi Virgili</h3>
-    // </div>`
-    } else {
-    html += `<div class="player dead" id='player${players[i].id}'>${players[i].name}</div>`;
+    //ADD HTML IN ITERATION
+    let html = ``;
+
+    for (let i = 0; i < players.length; i++) {
+        
+        if (players[i].dead === false) {
+        html += `
+            <div class="player alive" id='player${players[i].id}'>
+                ${players[i].name}
+            </div>`;
+        
+        } else {
+        html += `
+            <div class="player dead" id='player${players[i].id}'>
+                ${players[i].name}
+            </div>`;
+        }
     }
-}
-wheel.innerHTML = html;
+    //INJECT HTML
+    wheel.innerHTML = html;
 }
 
 
 
 //Change selected player randomly in state
 function randomNumber() {
-    if (state.run){
+    
         setInterval( function () {
         let number = Math.floor(Math.random() * players.length);
 
         if (!players[number].dead&&state.run) {
-            state.number = number;
-            console.log(state.number)
+            state.randomNumber = number;
+            console.log(state.randomNumber)
             changeStylePlayer()
         }
         }, 200);
-    }
+    
 }
 
 function play() {
     state.run = true;
     randomNumber();
 }
+
 function stop(){
     state.run = false;
 }
@@ -90,14 +192,14 @@ function stop(){
 function reset() {
     for (let i = 0; i < players.length; i++) {
         players[i].dead = false;
-        console.log(i)
+        
     }
     printWheel()   
 }
 
 //Change css player selected
 function changeStylePlayer() {
-    let player = `player${state.number+1}`;
+    let player = `player${state.randomNumber+1}`;
     let playersDOM = document.getElementsByClassName('alive')
     console.log(playersDOM)
     let playerDOM = document.getElementById(player);
@@ -107,10 +209,10 @@ function changeStylePlayer() {
 
 //Kill
 function kill() {
-    let text = 'kill '+ players[state.number].name+' number'+ state.number
+    let text = 'kill '+ players[state.randomNumber].name+' number'+ state.randomNumber
     alert(text)
     stop();
-    players[state.number].dead=true;
+    players[state.randomNumber].dead=true;
     printWheel();
 }
     
