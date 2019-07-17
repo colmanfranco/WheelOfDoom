@@ -38,12 +38,15 @@ justify-content: space-around;
 /* PLAYER STYLE */
 .player {
 
-    padding: 1em;
+    padding: 10%;
     background-color: grey;
     width: 200px;
     height: 200px;
     border-radius: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+
     
 }
 .alive {
