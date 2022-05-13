@@ -2,42 +2,42 @@
 const players = [
     {
          id: 1,
-         name:"Alexandro",
+         name:"Cessy",
          dead: false
      },
      {
          id: 2,
-         name:"Amau",
+         name:"Lau",
          dead: false
      },
      {
          id: 3,
-         name:"Camilo",
+         name:"Gerard",
          dead: false
      },
      {
          id: 4,
-         name:"Carlos",
+         name:"Sergi",
          dead: false
      },
      {
          id: 5,
-         name:"Delfina",
+         name:"Emma",
          dead: false
      },
      {
          id: 6,
-         name:"Enric",
+         name:"Alvaro",
          dead: false
      },
      {
          id: 7,
-         name:"Erik",
+         name:"Susan",
          dead: false
      },
      {
          id: 8,
-         name:"Ferran",
+         name:"Josu",
          dead: false
      },
      {
@@ -47,79 +47,19 @@ const players = [
      },
      {
          id: 10,
-         name:"Janina",
+         name:"Feyi",
          dead: false
      },
      {
          id: 11,
-         name:"Jason",
+         name:"Ezequiel",
          dead: false
      },
      {
-         id: 12,
-         name:"Kavan",
+         id: 11,
+         name:"Vessy",
          dead: false
      },
-     {
-         id: 13,
-         name:"Manuela",
-         dead: false
-     },
-     {
-         id: 14,
-         name:"Nathalia",
-         dead: false
-     },
-     {
-         id: 15,
-         name:"Nellay",
-         dead: false
-     },
-     {
-         id: 16,
-         name:"Noelia",
-         dead: false
-     },
-     {
-         id: 17,
-         name:"Nuria",
-         dead: false
-     },
-     {
-         id: 18,
-         name:"Raul",
-         dead: false
-     },
-     {
-         id: 19,
-         name:"Sergi",
-         dead: false
-     },
-     {
-         id: 20,
-         name:"Shuangjie",
-         dead: false
-     },
-     {
-         id: 21,
-         name:"Solomon",
-         dead: false
-     },
-     {
-         id: 22,
-         name:"Unai",
-         dead: false
-     },
-     {
-         id: 23,
-         name:"Andres",
-         dead: false
-     },
-     {
-         id: 24,
-         name:"Thierry",
-         dead: false
-     }
  ];
   
 //State aplication
@@ -209,7 +149,7 @@ function changeStylePlayer() {
 
 //Kill
 function kill() {
-    let text = 'kill '+ players[state.randomNumber].name+' number'+ state.randomNumber
+    let text = 'Its '+ players[state.randomNumber].name+'s turn to facilitate';
     alert(text)
     stop();
     players[state.randomNumber].dead=true;
