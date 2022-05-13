@@ -2,7 +2,7 @@
 const players = [
     {
          id: 1,
-         name:"Cessy",
+         name:"Ceci",
          dead: false
      },
      {
@@ -106,17 +106,14 @@ function printWheel() {
 
 //Change selected player randomly in state
 function randomNumber() {
-    
         setInterval( function () {
         let number = Math.floor(Math.random() * players.length);
 
-        if (!players[number].dead&&state.run) {
+        if (!players[number].dead && state.run) {
             state.randomNumber = number;
-            console.log(state.randomNumber)
             changeStylePlayer()
         }
-        }, 200);
-    
+    }, 500);
 }
 
 function play() {
@@ -132,9 +129,8 @@ function stop(){
 function reset() {
     for (let i = 0; i < players.length; i++) {
         players[i].dead = false;
-        
     }
-    printWheel()   
+    printWheel();
 }
 
 //Change css player selected
@@ -149,7 +145,7 @@ function changeStylePlayer() {
 
 //Kill
 function kill() {
-    let text = 'Its '+ players[state.randomNumber].name+'s turn to facilitate';
+    let text = players[state.randomNumber].name;
     alert(text)
     stop();
     players[state.randomNumber].dead=true;
