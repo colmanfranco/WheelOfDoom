@@ -62,6 +62,9 @@ const players = [
      },
  ];
   
+ //Import from json coders to players array
+function codersImport() {}
+
 //State aplication
 const state = {
     randomNumber: "",
@@ -69,51 +72,44 @@ const state = {
     run: false
 };
 
-//RENDER INIT WHEEL
+
 printWheel();
 
-//Import from json coders to players array
-function codersImport() {}
-
-//Print the wheel in DOM
 function printWheel() {
-
-    let wheel = document.getElementById("wheel");
-
-    //ADD HTML IN ITERATION
+    const wheel = document.getElementById("wheel");
     let html = ``;
-
-    for (let i = 0; i < players.length; i++) {
-        
-        if (players[i].dead === false) {
-        html += `
-            <div class="player alive" id='player${players[i].id}'>
-                ${players[i].name}
-            </div>`;
-        
+    players.map((member) => {
+        if (member.dead) {
+            html += constructString(member, 'dead');
         } else {
-        html += `
-            <div class="player dead" id='player${players[i].id}'>
-                ${players[i].name}
-            </div>`;
+        html += constructString(member, 'alive');
         }
-    }
-    //INJECT HTML
+
+    })
     wheel.innerHTML = html;
 }
 
-
+function constructString(member, state) {
+    return `<div class='player ${state}' id='player${member.id}'>
+            ${member.name}
+        </div>`
+}
 
 //Change selected player randomly in state
 function randomNumber() {
-        setInterval( function () {
-        let number = Math.floor(Math.random() * players.length);
-
-        if (!players[number].dead && state.run) {
-            state.randomNumber = number;
-            changeStylePlayer()
+    setInterval( function () {
+        const index = Math.floor(Math.random() * players.length);
+        if (!players[index].dead && state.run) {
+            state.randomNumber = index;
+            changeStylePlayer();
         }
-    }, 500);
+    }, 250);
+}
+
+function changeStylePlayer() {
+    let player = `player${state.randomNumber+1}`;
+    let playerDOM = document.getElementById(player);
+    playerDOM.classList.toggle("player-selected")
 }
 
 function play() {
@@ -125,30 +121,18 @@ function stop(){
     state.run = false;
 }
 
-//Reset all in players array
-function reset() {
-    for (let i = 0; i < players.length; i++) {
-        players[i].dead = false;
-    }
-    printWheel();
-}
-
-//Change css player selected
-function changeStylePlayer() {
-    let player = `player${state.randomNumber+1}`;
-    let playersDOM = document.getElementsByClassName('alive')
-    console.log(playersDOM)
-    let playerDOM = document.getElementById(player);
-    playerDOM.classList.toggle("player-selected")
-    console.log('playerid:' + player)
-}
-
-//Kill
 function kill() {
     let text = players[state.randomNumber].name;
     alert(text)
     stop();
     players[state.randomNumber].dead=true;
+    printWheel();
+}
+
+function reset() {
+    for (let i = 0; i < players.length; i++) {
+        players[i].dead = false;
+    }
     printWheel();
 }
     
