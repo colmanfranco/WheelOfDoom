@@ -80,17 +80,22 @@ function printWheel() {
     let html = ``;
     teamMembers.map((member) => {
         if (member.dead) {
-            html += constructString(member, 'dead');
+            html += memberComponentConstructor(member, 'dead');
         } else {
-        html += constructString(member, 'alive');
+        html += memberComponentConstructor(member, 'alive');
         }
 
     })
     wheel.innerHTML = html;
 }
 
+<<<<<<< HEAD
 function constructString(member, state) {
     return `<div class='player ${state}' id='member-${member.id}'>
+=======
+function memberComponentConstructor(member, state) {
+    return `<div class='player ${state}' id='player${member.id}'>
+>>>>>>> 63e916f18707e3ce161a36edebb00ab0e9e0f006
             ${member.name}
         </div>`
 }
