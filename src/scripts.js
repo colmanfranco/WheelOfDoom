@@ -1,5 +1,5 @@
 //ARRAY PLAYER OBJECTS
-const players = [
+const teamMembers = [
     {
          id: 1,
          name:"Ceci",
@@ -62,7 +62,7 @@ const players = [
      },
  ];
   
- //Import from json coders to players array
+ //Import from json coders to teamMembers array
 function codersImport() {}
 
 //State aplication
@@ -78,7 +78,7 @@ printWheel();
 function printWheel() {
     const wheel = document.getElementById("wheel");
     let html = ``;
-    players.map((member) => {
+    teamMembers.map((member) => {
         if (member.dead) {
             html += constructString(member, 'dead');
         } else {
@@ -90,26 +90,9 @@ function printWheel() {
 }
 
 function constructString(member, state) {
-    return `<div class='player ${state}' id='player${member.id}'>
+    return `<div class='player ${state}' id='member-${member.id}'>
             ${member.name}
         </div>`
-}
-
-//Change selected player randomly in state
-function randomNumber() {
-    setInterval( function () {
-        const index = Math.floor(Math.random() * players.length);
-        if (!players[index].dead && state.run) {
-            state.randomNumber = index;
-            changeStylePlayer();
-        }
-    }, 250);
-}
-
-function changeStylePlayer() {
-    let player = `player${state.randomNumber+1}`;
-    let playerDOM = document.getElementById(player);
-    playerDOM.classList.toggle("player-selected")
 }
 
 function play() {
@@ -117,22 +100,53 @@ function play() {
     randomNumber();
 }
 
-function stop(){
+function randomNumber() {
+    setInterval( () => {
+        const index = getMemberIndex();
+        if (!teamMembers[index].dead && state.run) {
+            state.randomNumber = index;
+            setCookie('name', teamMembers[index].name, 30)
+            changeStylePlayer();
+        }
+    }, 300);
+}
+
+function getMemberIndex() {
+    return Math.floor(Math.random() * teamMembers.length);
+}
+
+function changeStylePlayer() {
+    let player = `member-${state.randomNumber+1}`;
+    let playerDOM = document.getElementById(player);
+    setInterval( function () {
+        playerDOM.classList.toggle("player-selected")    
+    }, 500)
+}
+
+function stop() {
     state.run = false;
 }
 
 function kill() {
-    let text = players[state.randomNumber].name;
+    const text = teamMembers[state.randomNumber].name;
     alert(text)
     stop();
-    players[state.randomNumber].dead=true;
+    changeMemberState();
     printWheel();
 }
 
+function changeMemberState() {
+    teamMembers[state.randomNumber].dead=true;
+}
+
 function reset() {
-    for (let i = 0; i < players.length; i++) {
-        players[i].dead = false;
-    }
+    teamMembers.map((member) => { member.dead = false; })
     printWheel();
 }
-    
+
+function setCookie(name, value, expiringDays) {
+    const date = new Date();
+    date.setTime(date.getTime() + (expiringDays * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + "; " + expires + "; path=/";
+}
