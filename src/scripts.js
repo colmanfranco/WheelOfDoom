@@ -90,7 +90,7 @@ function printWheel() {
 }
 
 function memberComponentConstructor(member, state) {
-    return `<div class='player ${state}' id='player${member.id}'>
+    return `<div class='player ${state}' id='member-${member.id}'>
             ${member.name}
         </div>`
 }
