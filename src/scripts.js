@@ -25,11 +25,11 @@ const teamMembers = [
          name:"Emma",
          dead: false
      },
-     {
-         id: 6,
-         name:"Alvaro",
-         dead: false
-     },
+    //  {
+    //      id: 6,
+    //      name:"Alvaro",
+    //      dead: false
+    //  },
      {
          id: 7,
          name:"Susan",
@@ -60,6 +60,21 @@ const teamMembers = [
          name:"Vessy",
          dead: false
      },
+     {
+        id: 12,
+        name:"Alexander",
+        dead: false
+    },
+    {
+        id: 13,
+        name:"Guillem",
+        dead: false
+    },
+    {
+        id: 14,
+        name:"Eli",
+        dead: false
+    },
  ];
   
  //Import from json coders to teamMembers array
@@ -123,10 +138,6 @@ function changeStylePlayer() {
     }, 500)
 }
 
-function stop() {
-    state.run = false;
-}
-
 function kill() {
     const text = teamMembers[state.randomNumber].name;
     alert(text)
@@ -135,8 +146,12 @@ function kill() {
     printWheel();
 }
 
+function stop() {
+    state.run = false;
+}
+
 function changeMemberState() {
-    teamMembers[state.randomNumber].dead=true;
+    teamMembers[state.randomNumber].dead = true;
 }
 
 function reset() {

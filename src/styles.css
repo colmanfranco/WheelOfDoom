@@ -20,17 +20,16 @@ background-repeat: no-repeat;
 /* PLAYERS CONTAINER */
 #wheel {
     height: 70%;
-    width: calc(100% / 5);
+    width: calc(100% / 4);
     display: flex;
     flex-wrap: wrap; 
-    justify-content: space-evenly;
+    justify-content: space-around;
     position: relative;
-    margin: 10px 0 0 40%;
+    margin: 0 auto 0 auto;
     flex-grow: 1;
 }
 
-/* BUTTONS CONTAINER */
-#buttons {
+#buttonsContainer {
 display: flex;
 justify-content: space-evenly;
 }
